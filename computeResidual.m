@@ -50,6 +50,9 @@ wzd = 0.1;
                 continue;
             end
             x0 = floor(projected2x); y0 = floor(projected2y);
+            if x0 == 0 || y0 == 0
+                continue;
+            end
             x1w = projected2x - x0;
             x0w = 1.0 - x1w;
             y1w = projected2y - y0;
@@ -74,4 +77,5 @@ wzd = 0.1;
         end
     end
     residual = residual(1:count,:);
+    residualCorres = residualCorres(1:count,:);
 end

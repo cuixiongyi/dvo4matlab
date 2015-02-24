@@ -1,4 +1,4 @@
-function [jw,jz] = computeJacobianOfProjectionAndTransformation(p, depth, xpose,JZ2, variable, devrative2x,devrative2y)
+function [jw,jz] = computeJacobianOfProjectionAndTransformation(p, xpose,JZ2, variable, devrative2x,devrative2y)
 p = reshape(p,[1,3]);
 z = 1/p(3);
 z_sqr = z^2;
