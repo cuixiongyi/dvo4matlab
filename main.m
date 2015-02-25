@@ -33,8 +33,11 @@ for ii = 1 : maxLevel
     fx_ = fx*0.5^(ii-1); fy_ = fy*0.5^(ii-1); cx_ = cx*0.5^(ii-1); cy_ = cy*0.5^(ii-1);
     [pointcloud1{ii}, pointcloud2{ii}, devrative1x{ii}, devrative1y{ii}, devrative2x{ii}, devrative2y{ii}] = calculateElement(depth1{ii}, depth2{ii});
     if (ii ~= maxLevel)
-        depth1{ii+1} = depth1{ii}(1:2:end,1:2:end);
-        depth2{ii+1} = depth2{ii}(1:2:end,1:2:end);
+        G = fspecial('gaussian',[3 3],1);
+        Ig = imfilter(depth1{ii},G,'same');
+        depth1{ii+1} = Ig(1:2:end,1:2:end);
+        Ig = imfilter(depth2{ii},G,'same');
+        depth2{ii+1} = Ig(1:2:end,1:2:end);
     end
 end
 

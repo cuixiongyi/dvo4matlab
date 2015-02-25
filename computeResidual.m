@@ -1,7 +1,7 @@
 function [count, residual, residualCorres, projectedPointcloud] = computeResidual(T, depth1, depth2, pointcloud1, pointcloud2, devrative1x, devrative1y, devrative2x, devrative2y)
     global fx_ fy_ cx_ cy_;
 %     global wcur wref;
-wzd = 0.1;
+wzd = 0;
     wcur_zd = wzd; wref_zd = -wzd;
 
     %% Project reference image into current

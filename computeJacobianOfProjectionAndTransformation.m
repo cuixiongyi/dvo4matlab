@@ -25,14 +25,16 @@ jw = zeros(2,6);
 %   jz(4) = y;
 %   jz(5) = x;
 %   jz(6) = 0.0;
-
+% 
 %   nanJz = sum(isnan(jz));
 %   nanJw = sum(isnan(jw));
 %   if nanJz(1) > 0 || nanJw(1) > 0
 %       'nan in Jacobian'
+%       jw = zeros(2,6);
+%       jz = zeros(1,6);
 %   end
-  global fx_ fy_ cx_ cy_ ;
 
+  global fx_ fy_ cx_ cy_ ;
     syms X1 Y1 Z1 v1 v2 v3 w1 w2 w3 Xihat Xi fxs fys cxs cys depth2dx depth2dy
   if xpose(1)* xpose(2)*xpose(3)*xpose(4)*xpose(5)*xpose(6) ~= 0
     jz = double(subs(JZ2, variable, {p(1), p(2), p(3), fx_, fy_, cx_, cy_, devrative2x, devrative2y, xpose(1), xpose(2),xpose(3),xpose(4),xpose(5),xpose(6) }));

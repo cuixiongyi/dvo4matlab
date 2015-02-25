@@ -1,0 +1,20 @@
+ww = 4;
+
+channel =1;
+
+
+imJa = zeros(size(depth1{ww}),'single');
+JTmp = newJlist(:,channel);
+% [mink, iiT] = min(JTmp);
+% JTmp(ii) = median(JTmp);
+% JTmp = JTmp-(min(weightedJ(channel,:)));
+JTmp = lsList{ww}(:,1);
+JTmp = JTmp*200;
+for ii = 1 : length(JTmp)
+yy = residualCorres{ww}(ii,1);
+xx = residualCorres{ww}(ii,2);    
+   imJa(yy,xx) =  JTmp(ii);
+   
+end
+imshow(imJa, [min(JTmp), max(JTmp)]);
+% sum(isnan(lsList{4}))
