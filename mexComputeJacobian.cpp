@@ -66,9 +66,10 @@ inline void computeJacobianEach(const float& x, const float& y, const float& z, 
 	j.push_back(dx*fx_ / e8);
 	j.push_back(dy*fy_ / e8);
 	j.push_back(-4*dx*fx_*e2/e1 - 4*dy*fy_*e3/e1 - 1);
-	j.push_back(y*(w1sq - 2) / 2 - x*(w3 + w1w2) / 2 + w1*z + dx*(fx_*(w2*y + w3*z + e18 - e16) / e7 - fx_*e2*e5 * 4 / e1) - dy*(fy_*(2*z-w2*x+e12-e11+e15)/e7+(fy_*e3*e5*4)/e1));
+
+	j.push_back(y*(w1sq - 2) / 2 - x*(w3 + w1w2) / 2 + w1*z + dx*(fx_*(w2*y + w3*z + e18 - e6) / e7 - fx_*e2*e5 * 4 / e1) - dy*(fy_*(2*z-w2*x+e12-e11+e15)/e7+(fy_*e3*e5*4)/e1));
 	j.push_back(w2*z - x*(w2sq - 2) / 2 - y*(w3 - w1w2) / 2 + dy*(fy_*(w1*x + w3*z - e19 + e6) / e7 + fy_*e3*e4 * 4 / e1) + dx*(fx_*(2 * z - e13 + w1*y - e10 + e14) / e7 + fx_*e2*e4 * 4 / e1));
-	j.push_back(dy*(fy_*(2*x-2*w3*y+w2*z-w3sq*x+w1w3*z)/e7-fy_*e9*e3*4/e1)-dx*(fx_*(2*y+2*w3*x-w1*z-w3sq*y+w2w3*z)/e7+fx_*e9*e2*4/e1)-x*(w1+w2w3)/2-y*(w2-w1w3*2));
+	j.push_back(dy*(fy_*(2 * x - 2 * w3*y + w2*z - w3sq*x + w1w3*z) / e7 - fy_*e9*e3 * 4 / e1) - dx*(fx_*(2 * y + 2 * w3*x - w1*z - w3sq*y + w2w3*z) / e7 + fx_*e9*e2 * 4 / e1) - x*(w1 + w2w3) / 2 - y*(w2 - w1w3 )/2);
 
 
 
