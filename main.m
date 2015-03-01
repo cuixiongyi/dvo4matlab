@@ -47,7 +47,7 @@ itError = realmax;
 % T = zeros(4); T(1,1) = 1; T(2,2) = 1; T(3,3) = 1; T(4,4) = 1;
 
 meanVec = zeros(1,3);
-JacobianT;
+% JacobianT;
 
 variable = [X1, Y1, Z1, fxs, fys, cxs, cys, depth2dx, depth2dy, v1, v2, v3, w1, w2, w3];
 %%

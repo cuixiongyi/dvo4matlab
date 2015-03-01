@@ -29,4 +29,12 @@ R = T(1:3,1:3);
 xpose = zeros(1,6);
 xpose(4:6) = Rodrigues(T(1:3,1:3));
 xpose(1:3) = [T(1,4), T(2,4), T(3,4)];
+
+
+twisttmp = twistlog(T);
+xpose(1:3) = [twisttmp(1,4), twisttmp(2,4), twisttmp(3,4)];
+xpose(4) = -twisttmp(1,2);
+xpose(5) =  twisttmp(1,3);
+xpose(6) = -twisttmp(2,3);
+xpose = xpose';
 end

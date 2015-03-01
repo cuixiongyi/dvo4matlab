@@ -21,4 +21,5 @@ T(4,4) = 1;
 T(1:3,1:3) = Rodrigues(xpose(4:6));
 T(1:3,4) = [xpose(1),xpose(2),xpose(3)]';
      
+T = twistexp(xpose);
 end

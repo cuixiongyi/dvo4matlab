@@ -9,14 +9,14 @@ mean2 = [0,0,0];
 lsList = cell(1,maxLevel);
 % x is se3 transformation from reference to current, is the inverse
 % transformation T corresponding SE3 to x
-x = zeros(1,6)+0.0001;
+x = zeros(6,1)+0.0001;
 T = xpose2T(x);
-xpose = T2xpose(T)
+xpose = T2xpose(T);
 % output JZ2  is the Jacobian
 
 xRecord = cell(1,maxLevel);
 xLastTime = x;
-for ww = maxLevel -3: -1 : 1
+for ww = maxLevel : -1 : 1
     iterationInner = 0;
     fx_ = fx*0.5^(ww-1); fy_ = fy*0.5^(ww-1); cx_ = cx*0.5^(ww-1); cy_ = cy*0.5^(ww-1);
     likilihoodLast = realmax;
@@ -49,7 +49,7 @@ for ww = maxLevel -3: -1 : 1
         ll = computeCompleteDataLogLikelihood(residual{ww}, precision);
         ll = -ll;
         diffll = ll - likilihoodLast
-        sumResidual = abs(sum(residual{ww}));
+        sumResidual = abs(sum(residual{ww}))
         if diffll > 0
             'likilihood decrease'
             xpose = xLastTime;
@@ -106,6 +106,9 @@ for ww = maxLevel -3: -1 : 1
         A = weightedJ*newJlist;
         b = -sum(weightedb, 2);
         x = A^(-1)*b;
+        if ww == 1
+            tmpxx = 1;
+        end
         ifHaveNewx = true;
 % %         xRecord{ww}(iteration) = x;
     end

@@ -71,10 +71,17 @@ inline void computeJacobianEach(const float& x, const float& y, const float& z, 
 	j.push_back(w2*z - x*(w2sq - 2) / 2 - y*(w3 - w1w2) / 2 + dy*(fy_*(w1*x + w3*z - e19 + e6) / e7 + fy_*e3*e4 * 4 / e1) + dx*(fx_*(2 * z - e13 + w1*y - e10 + e14) / e7 + fx_*e2*e4 * 4 / e1));
 	j.push_back(dy*(fy_*(2 * x - 2 * w3*y + w2*z - w3sq*x + w1w3*z) / e7 - fy_*e9*e3 * 4 / e1) - dx*(fx_*(2 * y + 2 * w3*x - w1*z - w3sq*y + w2w3*z) / e7 + fx_*e9*e2 * 4 / e1) - x*(w1 + w2w3) / 2 - y*(w2 - w1w3 )/2);
 
+	/*double zp = 1.0 / z;
+	double zsq = zp*zp;
+	j.resize(6);
+	j[0] = dx*zp;
+	j[1] = dy*zp;
+	j[2] = dx *(-x) * zsq + dy*(-y * zsq) - 1.0;
+	j[3] = dx*(-x) * zsq * y + dy*(-(1.0 + x*x*zsq)) + y;
+	j[4] = dx*(1 + x*x*zsq) + dy*(x*y*zsq)-x;
+	j[5] = dx*(-y*zp) + dy*x*zp;*/
 
-
-
-
+	
 
 
 	return;

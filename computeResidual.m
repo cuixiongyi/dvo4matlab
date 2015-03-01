@@ -73,6 +73,9 @@ wzd = 0;
             if sum(isnan(residual(count+1,:))) > 0 || sum(isnan(devrative1x(ii,jj))) || sum(isnan(devrative1y(ii,jj)))
                 continue;
             end
+%             if abs(residual(count+1,1)) > 5
+%                 continue;
+%             end
             count = count +1;
         end
     end
